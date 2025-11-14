@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7ofnx4gvwjqs"]
+
+[ext_resource type="PackedScene" uid="uid://70uvftdiveqk" path="res://Scenes/UI/UI.tscn" id="1_wbfu4"]
+[ext_resource type="Script" uid="uid://bgu3yubppi6gm" path="res://Scenes/Game/game.gd" id="1_xkndl"]
+[ext_resource type="PackedScene" uid="uid://crmyb5r4fdiek" path="res://Scenes/Wall/Wall.tscn" id="3_xbxml"]
+[ext_resource type="PackedScene" uid="uid://dsel73msjom2t" path="res://Scenes/Paddle/Paddle.tscn" id="4_ln2h6"]
+[ext_resource type="PackedScene" uid="uid://bdr1x3qp6c6o" path="res://Scenes/Ball/Ball.tscn" id="5_y3kpf"]
+[ext_resource type="Script" uid="uid://k53mfacki73i" path="res://Scenes/Game/dropped_area.gd" id="6_3k6gv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3kpf"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_y3kpf"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_xkndl")
+
+[node name="UI" parent="." instance=ExtResource("1_wbfu4")]
+
+[node name="LeftWall" parent="." instance=ExtResource("3_xbxml")]
+
+[node name="RightWall" parent="." instance=ExtResource("3_xbxml")]
+side = 1
+
+[node name="UpperWall" parent="." instance=ExtResource("3_xbxml")]
+side = 2
+
+[node name="Paddle" parent="." instance=ExtResource("4_ln2h6")]
+position = Vector2(693, 2114)
+
+[node name="Ball" parent="." instance=ExtResource("5_y3kpf")]
+
+[node name="DroppedArea" type="Area2D" parent="."]
+script = ExtResource("6_3k6gv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DroppedArea"]
+shape = SubResource("RectangleShape2D_y3kpf")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="DroppedArea"]
+mesh = SubResource("QuadMesh_y3kpf")
