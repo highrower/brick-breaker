@@ -9,7 +9,10 @@ height = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcvud"]
 radius = 25.0
 
-[node name="Ball" type="CharacterBody2D" groups=["Balls"]]
+[node name="Ball" type="RigidBody2D" groups=["Balls"]]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_rcvud")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]

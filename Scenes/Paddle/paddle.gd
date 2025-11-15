@@ -9,7 +9,7 @@ var mesh_extent
 @export var length_ratio = .3
 
 func _ready() -> void:
-	position = Vector2(Global.viewport_size.x * 0.5, Global.viewport_size.y * 0.8)
+	position = Vector2(Global.screen_width * 0.5, Global.screen_height * 0.8)
 
 func _physics_process(_delta: float) -> void:
 	if pressed:

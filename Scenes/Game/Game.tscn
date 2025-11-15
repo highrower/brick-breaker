@@ -25,7 +25,7 @@ side = 1
 side = 2
 
 [node name="Paddle" parent="." instance=ExtResource("4_ln2h6")]
-position = Vector2(693, 2114)
+position = Vector2(341, 935)
 
 [node name="Ball" parent="." instance=ExtResource("5_y3kpf")]
 
