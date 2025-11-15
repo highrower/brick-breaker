@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk8m7d285u4p2"]
+
+[ext_resource type="Script" uid="uid://w46kddkta18t" path="res://Scenes/Brick/brick.gd" id="1_rrew5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m61xa"]
+size = Vector2(1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rrew5"]
+
+[node name="Brick" type="StaticBody2D" groups=["Bricks"]]
+script = ExtResource("1_rrew5")
+hp = null
+size = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m61xa")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_rrew5")

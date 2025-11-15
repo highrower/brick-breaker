@@ -12,11 +12,13 @@ func _ready():
 	reset()
 
 func _physics_process(delta: float) -> void:
+	for node in get_colliding_bodies():
+		if node.is_in_group("Bricks"):
+			node.queue_free()
 	var current_velocity = self.linear_velocity
 	var current_speed = current_velocity.length()
 
 	if current_speed < min_speed and current_speed > 0:
-		
 		var current_direction = current_velocity.normalized()
 		self.linear_velocity = current_direction * min_speed
 		
@@ -26,7 +28,7 @@ func _integrate_forces(state):
 		state.angular_velocity = 0.0
 		
 		var new_transform = state.transform
-		new_transform.origin = Vector2(Global.screen_width * 0.5, Global.screen_height * 0.2)
+		new_transform.origin = Vector2(Global.screen_width * 0.5, Global.screen_height * 0.5)
 		state.transform = new_transform
 		
 		reset_pending = false

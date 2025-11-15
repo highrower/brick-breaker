@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7ofnx4gvwjqs"]
+[gd_scene load_steps=10 format=3 uid="uid://b7ofnx4gvwjqs"]
 
 [ext_resource type="PackedScene" uid="uid://70uvftdiveqk" path="res://Scenes/UI/UI.tscn" id="1_wbfu4"]
 [ext_resource type="Script" uid="uid://bgu3yubppi6gm" path="res://Scenes/Game/game.gd" id="1_xkndl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsel73msjom2t" path="res://Scenes/Paddle/Paddle.tscn" id="4_ln2h6"]
 [ext_resource type="PackedScene" uid="uid://bdr1x3qp6c6o" path="res://Scenes/Ball/Ball.tscn" id="5_y3kpf"]
 [ext_resource type="Script" uid="uid://k53mfacki73i" path="res://Scenes/Game/dropped_area.gd" id="6_3k6gv"]
+[ext_resource type="Script" uid="uid://d0njwjmgte7tv" path="res://Scenes/Game/level_loader.gd" id="7_1q8bt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3kpf"]
 
@@ -25,7 +26,7 @@ side = 1
 side = 2
 
 [node name="Paddle" parent="." instance=ExtResource("4_ln2h6")]
-position = Vector2(341, 935)
+position = Vector2(337, 1072)
 
 [node name="Ball" parent="." instance=ExtResource("5_y3kpf")]
 
@@ -37,3 +38,6 @@ shape = SubResource("RectangleShape2D_y3kpf")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="DroppedArea"]
 mesh = SubResource("QuadMesh_y3kpf")
+
+[node name="LevelLoader" type="Node" parent="."]
+script = ExtResource("7_1q8bt")
