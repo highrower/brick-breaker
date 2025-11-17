@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var min_speed = 1000 
+var min_speed = 500 
 var direction
 var reset_pending = false
 
@@ -15,12 +15,6 @@ func _physics_process(delta: float) -> void:
 	for node in get_colliding_bodies():
 		if node.is_in_group("Bricks"):
 			node.queue_free()
-	var current_velocity = self.linear_velocity
-	var current_speed = current_velocity.length()
-
-	if current_speed < min_speed and current_speed > 0:
-		var current_direction = current_velocity.normalized()
-		self.linear_velocity = current_direction * min_speed
 		
 func _integrate_forces(state):
 	if reset_pending:
@@ -36,7 +30,14 @@ func _integrate_forces(state):
 		var ran_x = randf_range(-1, 1)
 		var ran_y = randf_range(-1, 1)
 		direction = Vector2(ran_x, ran_y).normalized()
-		apply_central_impulse(direction * min_speed)
+		apply_central_impulse(Vector2(0, -1) * min_speed)
+	var current_velocity = self.linear_velocity
+	var current_speed = current_velocity.length()
+
+	if current_speed < min_speed and current_speed > 0:
+		var current_direction = current_velocity.normalized()
+#		apply_force(current_direction * (min_speed - current_speed))
+		self.linear_velocity = current_direction * min_speed
 
 func reset():
 	reset_pending = true

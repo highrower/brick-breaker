@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global.gd"
 
+[debug]
+
+gdscript/warnings/exclude_addons=false
+
 [display]
 
 window/size/viewport_width=720
@@ -30,6 +34,10 @@ window/handheld/orientation=1
 [dotnet]
 
 project/assembly_name="Brick Breaker"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
 
 [input_devices]
 
