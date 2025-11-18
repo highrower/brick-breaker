@@ -49,18 +49,23 @@ func _input(event):
 var last_twist_pos: Vector2
 
 func twist(event):
-	if event.index != 1: 
-		return
-
-	if last_twist_pos == null:
-		last_twist_pos = event.position
-		return
-
-	var delta = event.position - last_twist_pos
-	last_twist_pos = event.position
-
-	var sensitivity = 0.005  # tweak to taste
-	rotation += delta.x * sensitivity	
+	print("Starting pos: " + str(twist_start_position))
+	print("Curr pos: " + str(event.position))
+	print("difference: " + str(twist_start_position -  event.position))
+	
+	rotation_degrees = (twist_start_position -  event.position).length() / 30 
+#	if event.index != 1: 
+#		return
+#
+#	if last_twist_pos == null:
+#		last_twist_pos = event.position
+#		return
+#
+#	var delta = event.position - last_twist_pos
+#	last_twist_pos = event.position
+#
+#	var sensitivity = 0.005  # tweak to taste
+#	rotation += delta.x * sensitivity	
 		
 func move(dest, delta):
 	var clamped_x = clamp(dest, min_boundary + mesh_extent, max_boundary - mesh_extent)
