@@ -27,6 +27,7 @@ side = 2
 
 [node name="Paddle" parent="." instance=ExtResource("4_ln2h6")]
 position = Vector2(337, 1072)
+max_twist_degrees = 107.41
 
 [node name="Ball" parent="." instance=ExtResource("5_y3kpf")]
 
