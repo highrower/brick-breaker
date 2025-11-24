@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://d0njwjmgte7tv" path="res://Scenes/Game/level_loader.gd" id="7_1q8bt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3kpf"]
+size = Vector2(881, 58)
 
 [sub_resource type="QuadMesh" id="QuadMesh_y3kpf"]
 
@@ -17,24 +18,39 @@ script = ExtResource("1_xkndl")
 
 [node name="UI" parent="." instance=ExtResource("1_wbfu4")]
 
+[node name="PlayArea" type="ReferenceRect" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 710.0
+offset_bottom = 570.0
+
 [node name="LeftWall" parent="." instance=ExtResource("3_xbxml")]
+position = Vector2(0, 640)
+scale = Vector2(1, 150)
 
 [node name="RightWall" parent="." instance=ExtResource("3_xbxml")]
-side = 1
+position = Vector2(720, 640)
+scale = Vector2(1, 150)
 
 [node name="UpperWall" parent="." instance=ExtResource("3_xbxml")]
-side = 2
+position = Vector2(360, 0)
+scale = Vector2(40, 15)
 
 [node name="Paddle" parent="." instance=ExtResource("4_ln2h6")]
+unique_name_in_owner = true
 position = Vector2(337, 1072)
-max_twist_degrees = 107.41
 
 [node name="Ball" parent="." instance=ExtResource("5_y3kpf")]
+position = Vector2(337, 1003)
 
 [node name="DroppedArea" type="Area2D" parent="."]
+position = Vector2(100, 100)
 script = ExtResource("6_3k6gv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DroppedArea"]
+position = Vector2(260, 1118)
 shape = SubResource("RectangleShape2D_y3kpf")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="DroppedArea"]

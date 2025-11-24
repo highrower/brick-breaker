@@ -8,9 +8,8 @@ size = Vector2(1, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_rrew5"]
 
 [node name="Brick" type="StaticBody2D" groups=["Bricks"]]
+scale = Vector2(40, 40)
 script = ExtResource("1_rrew5")
-hp = null
-size = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_m61xa")
