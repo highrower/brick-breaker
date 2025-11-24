@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7ofnx4gvwjqs"]
+[gd_scene load_steps=13 format=3 uid="uid://b7ofnx4gvwjqs"]
 
 [ext_resource type="PackedScene" uid="uid://70uvftdiveqk" path="res://Scenes/UI/UI.tscn" id="1_wbfu4"]
 [ext_resource type="Script" uid="uid://bgu3yubppi6gm" path="res://Scenes/Game/game.gd" id="1_xkndl"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bdr1x3qp6c6o" path="res://Scenes/Ball/Ball.tscn" id="5_y3kpf"]
 [ext_resource type="Script" uid="uid://k53mfacki73i" path="res://Scenes/Game/dropped_area.gd" id="6_3k6gv"]
 [ext_resource type="Script" uid="uid://d0njwjmgte7tv" path="res://Scenes/Game/level_loader.gd" id="7_1q8bt"]
+[ext_resource type="Texture2D" uid="uid://de8fk1ppe0jnp" path="res://Assets/images/fast-forward-512.png" id="8_3586x"]
+[ext_resource type="Texture2D" uid="uid://cgm8svopehexc" path="res://Assets/images/play-512.png" id="8_gvja8"]
+[ext_resource type="Texture2D" uid="uid://dvhwhydno0fe1" path="res://Assets/images/pause-512.png" id="9_m1o7v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3kpf"]
 size = Vector2(881, 58)
@@ -16,15 +19,7 @@ size = Vector2(881, 58)
 [node name="Game" type="Node"]
 script = ExtResource("1_xkndl")
 
-[node name="UI" parent="." instance=ExtResource("1_wbfu4")]
-
-[node name="PlayArea" type="ReferenceRect" parent="UI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 10.0
-offset_top = 150.0
-offset_right = 710.0
-offset_bottom = 570.0
+[node name="Background" parent="." instance=ExtResource("1_wbfu4")]
 
 [node name="LeftWall" parent="." instance=ExtResource("3_xbxml")]
 position = Vector2(0, 640)
@@ -58,3 +53,73 @@ mesh = SubResource("QuadMesh_y3kpf")
 
 [node name="LevelLoader" type="Node" parent="."]
 script = ExtResource("7_1q8bt")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayArea" type="ReferenceRect" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 710.0
+offset_bottom = 570.0
+
+[node name="TopMenuArea" type="ReferenceRect" parent="UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 710.0
+offset_bottom = 150.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopMenuArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/TopMenuArea/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 40
+
+[node name="FastForwardButton" type="Button" parent="UI/TopMenuArea/HBoxContainer/MarginContainer2"]
+modulate = Color(0.12941177, 0.12941177, 0.12941177, 1)
+layout_mode = 2
+icon = ExtResource("8_3586x")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TopMenuArea/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="PlayButton" type="Button" parent="UI/TopMenuArea/HBoxContainer/MarginContainer"]
+visible = false
+modulate = Color(0.12941177, 0.12941177, 0.12941177, 1)
+layout_mode = 2
+icon = ExtResource("8_gvja8")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="PauseButton" type="Button" parent="UI/TopMenuArea/HBoxContainer/MarginContainer"]
+modulate = Color(0.12941177, 0.12941177, 0.12941177, 1)
+layout_mode = 2
+icon = ExtResource("9_m1o7v")
+flat = true
+icon_alignment = 1
+expand_icon = true

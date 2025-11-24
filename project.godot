@@ -37,7 +37,7 @@ project/assembly_name="Brick Breaker"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+enabled=PackedStringArray()
 
 [input_devices]
 
